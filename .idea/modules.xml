@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/api-gateway.iml" filepath="$PROJECT_DIR$/.idea/modules/api-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/api-gateway.test.iml" filepath="$PROJECT_DIR$/.idea/modules/api-gateway.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/board-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/board-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/board-service.test.iml" filepath="$PROJECT_DIR$/.idea/modules/board-service.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/data-collector.iml" filepath="$PROJECT_DIR$/.idea/modules/data-collector.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/data-collector.test.iml" filepath="$PROJECT_DIR$/.idea/modules/data-collector.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/discovery.iml" filepath="$PROJECT_DIR$/.idea/modules/discovery.iml" />
@@ -22,6 +23,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/project.iml" filepath="$PROJECT_DIR$/.idea/project.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/user-service.iml" filepath="$PROJECT_DIR$/.idea/modules/user-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/welfare-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/welfare-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/welfare-service.test.iml" filepath="$PROJECT_DIR$/.idea/modules/welfare-service.test.iml" />
     </modules>
   </component>
 </project>

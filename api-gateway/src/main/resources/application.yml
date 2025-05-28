@@ -54,9 +54,9 @@ management:
       show-details: always
 
 cors:
-  allowed-origins: "*"
+  allowed-origins: "http://localhost:5173, https://se-team17-fe.vercel.app"
   allowed-methods: "GET,POST,PUT,DELETE,OPTIONS"
-  allowed-headers: "*"
+  allowed-headers: "Authorization,Content-Type,Accept"
   max-age: 3600
 
 jwt:
