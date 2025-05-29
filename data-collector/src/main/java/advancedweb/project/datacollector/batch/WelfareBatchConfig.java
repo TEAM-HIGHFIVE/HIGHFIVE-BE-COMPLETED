@@ -11,8 +11,11 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
+import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
@@ -22,11 +25,27 @@ public class WelfareBatchConfig {
     private final WelfareRepository welfareRepository;
     private final WelfareDataFetchService welfareDataFetchService;
     private final WelfareCrawlingService welfareCrawlingService;
+    private final MongoTemplate mongoTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Bean
-    public Job welfareJob(JobRepository jobRepository, Step welfareStep) {
+    public Job welfareJob(JobRepository jobRepository, Step initStep, Step welfareStep) {
         return new JobBuilder("welfareJob", jobRepository)
-                .start(welfareStep)
+                .start(initStep)      // 1) 초기화 스텝
+                .next(welfareStep)    // 2) 실제 처리 스텝
+                .build();
+    }
+
+    @Bean
+    public Step initStep(JobRepository jobRepository,
+                         PlatformTransactionManager transactionManager) {
+        return new StepBuilder("initStep", jobRepository)
+                .tasklet((contribution, chunkContext) -> {
+                    clearBatchMetadata();
+                    clearMongoCollection();
+
+                    return RepeatStatus.FINISHED;
+                }, transactionManager)
                 .build();
     }
 
@@ -53,6 +72,25 @@ public class WelfareBatchConfig {
     @Bean
     public WelfareBatchWriter WelfareItemWriter() {
         return new WelfareBatchWriter(welfareRepository);
+    }
+
+    private void clearBatchMetadata() {
+        jdbcTemplate.execute("SET FOREIGN_KEY_CHECKS = 0");
+        for (String table : new String[]{
+                "BATCH_STEP_EXECUTION_CONTEXT",
+                "BATCH_STEP_EXECUTION",
+                "BATCH_JOB_EXECUTION_CONTEXT",
+                "BATCH_JOB_EXECUTION_PARAMS",
+                "BATCH_JOB_EXECUTION",
+                "BATCH_JOB_INSTANCE"
+        }) {
+            jdbcTemplate.execute("TRUNCATE TABLE " + table);
+        }
+        jdbcTemplate.execute("SET FOREIGN_KEY_CHECKS = 1");
+    }
+
+    private void clearMongoCollection() {
+        mongoTemplate.dropCollection("welfare");
     }
 }
 

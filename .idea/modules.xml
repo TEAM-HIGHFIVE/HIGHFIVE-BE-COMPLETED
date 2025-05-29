@@ -23,7 +23,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/project.iml" filepath="$PROJECT_DIR$/.idea/project.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/user-service.iml" filepath="$PROJECT_DIR$/.idea/modules/user-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/welfare-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/welfare-service.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/welfare-service.test.iml" filepath="$PROJECT_DIR$/.idea/modules/welfare-service.test.iml" />
     </modules>
   </component>
 </project>
