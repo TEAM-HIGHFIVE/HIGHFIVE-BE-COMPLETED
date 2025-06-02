@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -38,21 +39,23 @@ public class WelfareBatchProcessor implements ItemProcessor<WelfareItem, Welfare
         return Welfare.builder()
                 .summary(
                         Summary.builder()
-                                .name(item.serviceName())
+                                .name(item.serviceName() != null ? item.serviceName() : null)
                                 .areas(areas)
                                 .targets(targets)
                                 .build()
                 )
                 .detail(
-                        Detail.builder()
-                                .target(crawling.targetDetail() != null ? crawling.targetDetail() : null)
-                                .criteria(crawling.criteria() != null ? crawling.criteria() : null)
-                                .content(crawling.content() != null ? crawling.content() : null)
-                                .applyMethod(crawling.applyMethod() != null ? crawling.applyMethod() : null)
-                                .tel(crawling.tel() != null ? crawling.tel() : null)
-                                .referenceLink(crawling.referenceLink() != null ? crawling.referenceLink() : null)
-                                .reference(crawling.reference() != null ? crawling.reference() : null)
-                                .build()
+                        Optional.ofNullable(crawling)
+                                .map(c -> Detail.builder()
+                                        .target(c.targetDetail())
+                                        .criteria(c.criteria())
+                                        .content(c.content())
+                                        .applyMethod(c.applyMethod())
+                                        .tel(c.tel())
+                                        .referenceLink(c.referenceLink())
+                                        .reference(c.reference())
+                                        .build())
+                                .orElse(null)
                 )
                 .readCnt(0)
                 .build();

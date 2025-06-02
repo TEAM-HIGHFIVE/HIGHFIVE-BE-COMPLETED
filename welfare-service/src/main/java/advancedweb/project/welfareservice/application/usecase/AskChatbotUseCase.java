@@ -18,8 +18,8 @@ public class AskChatbotUseCase {
     private final AiFeignClient aiFeignClient;
 
     // Method
-    public ChatBotRes ask(String welfareNo, AskReq request) {
+    public ChatBotRes ask(String welfareNo, String question) {
         Welfare welfare = welfareService.read(welfareNo);
-        return aiFeignClient.chat(ChatBotReq.create(welfare, request.question()));
+        return aiFeignClient.chat(ChatBotReq.create(welfare, question));
     }
 }

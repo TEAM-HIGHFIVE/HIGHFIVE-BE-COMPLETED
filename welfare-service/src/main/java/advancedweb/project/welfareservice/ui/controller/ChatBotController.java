@@ -21,7 +21,7 @@ public class ChatBotController {
      */
     @GetMapping("/chatbot/{welfareNo}")
     @CheckAuthorization
-    public BaseResponse<ChatBotRes> question(@PathVariable String welfareNo, @RequestBody AskReq request) {
-        return BaseResponse.onSuccess(askChatbotUseCase.ask(welfareNo, request));
+    public BaseResponse<ChatBotRes> question(@PathVariable String welfareNo, @RequestParam String question) {
+        return BaseResponse.onSuccess(askChatbotUseCase.ask(welfareNo, question));
     }
 }

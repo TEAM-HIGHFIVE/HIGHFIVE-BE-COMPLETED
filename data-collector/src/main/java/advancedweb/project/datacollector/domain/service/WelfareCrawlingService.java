@@ -31,7 +31,7 @@ public class WelfareCrawlingService {
             }
 
             if (scriptData == null) {
-                throw new RuntimeException("initParameter 스크립트를 찾을 수 없습니다.");
+                return null;
             }
 
             // initParameter({ ... }); 부분에서 JSON만 추출
@@ -68,7 +68,8 @@ public class WelfareCrawlingService {
                     .build();
 
         } catch (Exception e) {
-            throw new RuntimeException("크롤링 실패: " + link, e);
+            System.out.println("크롤링 실패: " + link);
+            return null;
         }
     }
 
