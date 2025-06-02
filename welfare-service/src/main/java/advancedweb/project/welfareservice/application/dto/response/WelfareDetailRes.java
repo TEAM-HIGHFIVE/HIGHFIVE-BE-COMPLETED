@@ -12,7 +12,7 @@ public record WelfareDetailRes(
         String title,       // 제목
         LocalDateTime updatedAt,    // 갱신일
         Set<String> areas,    // 지역 태그
-        Set<Target> targets,    // 지원 대상 태그
+        Set<String> targets,    // 지원 대상 태그
         String criteria,    // 선정 기준
         String content,     // 서비스 내용
         String applyMethod,     // 신청 방법
@@ -27,7 +27,9 @@ public record WelfareDetailRes(
                 welfare.getSummary().getAreas().stream()
                         .map(Area::getDesc)
                         .collect(Collectors.toSet()),
-                welfare.getSummary().getTargets(),
+                welfare.getSummary().getTargets().stream()
+                        .map(Target::getDesc)
+                        .collect(Collectors.toSet()),
                 welfare.getDetail().getCriteria(),
                 welfare.getDetail().getContent(),
                 welfare.getDetail().getApplyMethod(),
