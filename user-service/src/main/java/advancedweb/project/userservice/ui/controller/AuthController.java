@@ -15,11 +15,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/users")
-@CrossOrigin(
-        origins = "https://highfive-fe-completed.vercel.app",
-        allowedHeaders = "*",
-        methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE}
-)
 public class AuthController {
 
     private final UserAuthUseCase userAuthUseCase;
