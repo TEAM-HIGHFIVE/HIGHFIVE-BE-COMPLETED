@@ -1,8 +1,8 @@
 package advancedweb.project.aiengineservice.ui.controller;
 
-import advancedweb.project.aiengineservice.application.usecase.RecommendWelfareUseCase;
 import advancedweb.project.aiengineservice.application.dto.request.AiRecommendRequest;
 import advancedweb.project.aiengineservice.application.dto.response.AiRecommendResponse;
+import advancedweb.project.aiengineservice.application.usecase.RecommendWelfareUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,7 +35,6 @@ public class GeminiRecommendController {
      * → { "recommendedPKs": [207,312] }
      */
     /**
-     * 근데 이렇게 받는것 보다  DTO 리스트를 더 낫지 않나?
      * @param req
      * @return
      */

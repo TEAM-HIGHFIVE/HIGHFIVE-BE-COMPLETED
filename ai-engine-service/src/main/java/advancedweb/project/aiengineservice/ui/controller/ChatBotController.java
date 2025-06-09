@@ -1,8 +1,8 @@
 package advancedweb.project.aiengineservice.ui.controller;
 
-import advancedweb.project.aiengineservice.application.usecase.ChatBotUseCase;
 import advancedweb.project.aiengineservice.application.dto.request.ChatBotRequest;
 import advancedweb.project.aiengineservice.application.dto.response.ChatBotResponse;
+import advancedweb.project.aiengineservice.application.usecase.ChatBotUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

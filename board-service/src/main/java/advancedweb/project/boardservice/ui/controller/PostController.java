@@ -8,6 +8,7 @@ import advancedweb.project.boardservice.global.annotation.CheckAuthorization;
 import advancedweb.project.boardservice.global.annotation.CurrentUser;
 import advancedweb.project.boardservice.global.response.BaseResponse;
 import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -59,7 +60,7 @@ public class PostController {
     @PostMapping
     @CheckAuthorization
     public BaseResponse<Void> writePost(@CurrentUser @Parameter(hidden = true) String userNo,
-                                        @RequestBody WritePostReq request) {
+                                        @RequestBody @Valid WritePostReq request) {
         postManagementUseCase.write(userNo, request);
         return BaseResponse.onSuccess();
     }

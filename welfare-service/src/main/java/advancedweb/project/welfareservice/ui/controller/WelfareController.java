@@ -10,7 +10,6 @@ import advancedweb.project.welfareservice.domain.entity.enums.Target;
 import advancedweb.project.welfareservice.global.annotation.CheckAuthorization;
 import advancedweb.project.welfareservice.global.response.BaseResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

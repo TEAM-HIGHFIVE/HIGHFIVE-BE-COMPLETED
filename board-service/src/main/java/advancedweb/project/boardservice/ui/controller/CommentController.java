@@ -7,6 +7,7 @@ import advancedweb.project.boardservice.global.annotation.CurrentUser;
 import advancedweb.project.boardservice.global.response.BaseResponse;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class CommentController {
     @PostMapping("/{postNo}")
     @CheckAuthorization
     public BaseResponse<Void> write(@PathVariable String postNo,
-                                    @RequestBody WriteCmtReq request,
+                                    @RequestBody @Valid WriteCmtReq request,
                                     @CurrentUser @Parameter(hidden = true) String userNo) {
         commentManagementUseCase.write(postNo, request, userNo);
         return BaseResponse.onSuccess();

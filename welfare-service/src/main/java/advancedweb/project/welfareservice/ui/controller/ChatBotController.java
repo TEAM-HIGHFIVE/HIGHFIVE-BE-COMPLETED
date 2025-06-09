@@ -1,6 +1,5 @@
 package advancedweb.project.welfareservice.ui.controller;
 
-import advancedweb.project.welfareservice.application.dto.request.AskReq;
 import advancedweb.project.welfareservice.application.dto.response.ChatBotRes;
 import advancedweb.project.welfareservice.application.usecase.AskChatbotUseCase;
 import advancedweb.project.welfareservice.global.annotation.CheckAuthorization;

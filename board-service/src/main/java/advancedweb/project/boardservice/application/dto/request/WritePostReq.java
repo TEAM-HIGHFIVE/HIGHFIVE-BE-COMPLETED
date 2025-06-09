@@ -1,6 +1,8 @@
 package advancedweb.project.boardservice.application.dto.request;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public record WritePostReq(
-        String title,
-        String content
+        @NotEmpty String title,
+        @NotEmpty String content
 ) {}

@@ -1,6 +1,8 @@
 package advancedweb.project.userservice.application.dto.request;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public record SignUpReq(
-        String username,
-        String password
+        @NotEmpty String username,
+        @NotEmpty String password
 ) {}
