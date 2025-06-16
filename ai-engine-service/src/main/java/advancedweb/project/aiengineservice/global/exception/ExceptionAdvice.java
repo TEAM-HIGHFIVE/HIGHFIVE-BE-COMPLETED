@@ -39,6 +39,7 @@ public class ExceptionAdvice extends ResponseEntityExceptionHandler {
     // @ExceptionHandler는 Controller계층에서 발생하는 에러를 잡아서 메서드로 처리해주는 기능
     @ExceptionHandler(value = RestApiException.class)
     public ResponseEntity<BaseResponse<String>> handleRestApiException(RestApiException e) {
+        e.printStackTrace();
         log.info("handleRestApiException: {}", e.getMessage());
         BaseCodeDto errorCode = e.getErrorCode();
         return handleExceptionInternal(errorCode);

@@ -7,6 +7,8 @@ import org.springframework.batch.item.Chunk;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class WelfareBatchWriter implements ItemWriter<Welfare> {
@@ -16,6 +18,9 @@ public class WelfareBatchWriter implements ItemWriter<Welfare> {
     @Override
     public void write(Chunk<? extends Welfare> chunk) throws Exception {
         System.out.println("chunk = " + chunk.getItems());
-        welfareRepository.saveAll(chunk);
+        List<? extends Welfare> items = chunk.getItems().stream()
+                .filter(welfare -> welfare.getDetail() != null)
+                .toList();
+        welfareRepository.saveAll(items);
     }
 }

@@ -52,6 +52,7 @@ public class GeminiService {
 
             return extractStringListFromRawResponse(result);
         } catch (IOException e) {
+            e.printStackTrace();
             throw new RestApiException(_PARSING_ERROR);
         }
     }

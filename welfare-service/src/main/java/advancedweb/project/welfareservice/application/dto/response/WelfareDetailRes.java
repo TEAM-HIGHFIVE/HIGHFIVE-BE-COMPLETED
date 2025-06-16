@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public record WelfareDetailRes(
+        String welfareNo,
         String title,       // 제목
         LocalDateTime updatedAt,    // 갱신일
         Set<String> areas,    // 지역 태그
@@ -22,6 +23,7 @@ public record WelfareDetailRes(
 ) {
     public static WelfareDetailRes create(Welfare welfare) {
         return new WelfareDetailRes(
+                welfare.getWelfareNo(),
                 welfare.getSummary().getName(),
                 LocalDateTime.now(),
                 welfare.getSummary().getAreas().stream()
